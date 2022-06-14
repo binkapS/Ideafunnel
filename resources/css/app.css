@@ -1,0 +1,43 @@
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
+
+@layer components {
+    .nav-link {
+        @apply block py-2 pr-4 pl-3 text-gray-300
+    }
+
+    .nav-link:hover {
+        @apply text-white bg-gray-900 rounded-md
+    }
+
+    .btn-wrapper {
+        @apply flex justify-center w-full
+    }
+
+    .btn-primary {
+        @apply py-1 px-2 bg-gray-800 rounded-md text-gray-300
+    }
+
+    .btn-primary:hover {
+        @apply text-white bg-gray-900 rounded-lg
+    }
+
+    .btn-primary:focus {
+        @apply ring-2 ring-gray-400
+    }
+
+    .btn-secondary {
+        @apply py-1 px-2 bg-gray-800 rounded-md text-gray-300 w-full
+    }
+
+    .btn-secondary:hover {
+        @apply text-white bg-gray-900 rounded-lg
+    }
+
+    .btn-secondary:focus {
+        @apply ring-2 ring-gray-400
+    }
+}
