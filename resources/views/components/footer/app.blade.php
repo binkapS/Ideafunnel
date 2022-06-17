@@ -13,22 +13,30 @@
             name="email"
             value="{{ old('email') }}"
             placeholder="Your email address"
-            class="p-2 rounded-l-md"
+            class="p-2 rounded-l-md text-gray-900"
             required
             autocomplete="email"
             >
             <button
             type="submit"
             class="uppercase bg-lime-400 p-2 text-white rounded-r-md outline-none"
+            @error('email')
+                autofucus
+            @enderror
             >
             Subscribe
             </button>
         </div>
+        @error('email')
+            <div class="text-xs text-red-500">
+                {{ $message }}
+            </div>
+        @enderror
     </form>
     </div>
     <div class="flex flex-col text-sm py-3 space-y-2">
         @foreach (categories(10) as $category)
-            <a href="{{ route('category', $category->id) }}" class="space-y-1 text-gray-300 hover:text-lime-500">
+            <a href="{{ route('category', $category) }}" class="space-y-1 text-gray-300 hover:text-lime-500">
                 <div class="flex items-center space-x-2">
                     <i class="fa fa-dot-circle-o"></i>
                     <span>{{ ucfirst($category->name) }}</span>

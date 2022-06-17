@@ -7,22 +7,7 @@
             Trending
         </div>
         <div class="p-2 space-y-1.5">
-            {{-- @foreach ($latests as $key => $latest)
-                <a href="{{ route('article', topic($latest->topic, true)) }}" class="flex flex-row justify-start items-start space-x-2">
-                    @if (hasThumbnail($latest))
-                        <img height="100" width="100" src="{{ getThumbNail($latest) }}" alt="">
-                    @else
-                        <img height="100" width="100" src="{{ asset('images/test.jpg') }}" alt="">
-                    @endif
-                    <div class="flex flex-col">
-                        <div class="flex space-x-2 text-xs">
-                            <i class="fa fa-user"> {{ $latest->author }}</i>
-                            <i class="fa fa-clock-o"> {{ $latest->created_at->diffForHumans() }}</i>
-                        </div>
-                        <span class="text-sm">{{ $latest->topic }}</span>
-                    </div>
-                </a>
-            @endforeach --}}
+
         </div>
     </div>
     <div class="w-full rounded-sm max-h-fit">
@@ -39,7 +24,7 @@
                     @endif
                     <div class="flex flex-col">
                         <div class="flex space-x-2 text-xs text-gray-500">
-                            <i class="fa fa-user"> {{ $latest->author }}</i>
+                            <i class="fa fa-user"> {{ $latest->aut->username }}</i>
                             <i class="fa fa-clock-o"> {{ $latest->created_at->diffForHumans() }}</i>
                         </div>
                         <span class="text-sm text-blue-400">{{ $latest->topic }}</span>
@@ -62,7 +47,7 @@
                     @endif
                     <div class="flex flex-col">
                         <div class="flex space-x-2 text-xs text-gray-500">
-                            <i class="fa fa-user"> {{ $breaking->author }}</i>
+                            <i class="fa fa-user"> {{ $breaking->aut->username }}</i>
                             <i class="fa fa-clock-o"> {{ $breaking->created_at->diffForHumans() }}</i>
                         </div>
                         <span class="text-sm text-blue-400">{{ $breaking->topic }}</span>
@@ -85,7 +70,7 @@
                     @endif
                     <div class="flex flex-col">
                         <div class="flex space-x-2 text-xs text-gray-500">
-                            <i class="fa fa-user"> {{ $update->author }}</i>
+                            <i class="fa fa-user"> {{ $update->aut->username }}</i>
                             <i class="fa fa-clock-o"> {{ $update->created_at->diffForHumans() }}</i>
                         </div>
                         <span class="text-sm text-blue-400">{{ $update->topic }}</span>

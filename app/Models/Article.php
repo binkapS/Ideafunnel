@@ -32,7 +32,8 @@ class Article extends Model
         'type',
         'thumbnail',
         'tags',
-        'views'
+        'views',
+        'status'
     ];
 
     public function cat()
@@ -43,6 +44,11 @@ class Article extends Model
     public function comments()
     {
         return $this->hasMany(Comment::class, 'article', 'id');
+    }
+
+    public function aut()
+    {
+        return $this->hasOne(User::class, 'id', 'author');
     }
 
     public function hasThumbnail(): bool

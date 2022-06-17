@@ -20,6 +20,7 @@ class Comment extends Model
         'id',
         'article',
         'author',
+        'email',
         'body'
     ];
 }

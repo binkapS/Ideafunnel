@@ -25,6 +25,7 @@ class CommentFactory extends Factory
             'id' => Str::random(Constant::COMMENT_ID_LENGTH),
             'article' => $articles[\random_int(0, $count)]->id,
             'author' => $this->faker->word(),
+            'email' => "real.desert.tiger@gmail.com",
             'body' => $this->faker->sentence()
         ];
     }

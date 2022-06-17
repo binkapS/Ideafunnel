@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Auth\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreateCommentRequest extends FormRequest
+class LoginRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,12 +23,8 @@ class CreateCommentRequest extends FormRequest
      */
     public function rules()
     {
-        return \auth()->guest() ? [
-            'name' => ['required'],
-            'email' => ['required', 'email'],
-            'comment' => ['required', 'min:20', 'max:500']
-        ] : [
-            'comment' => ['required', 'min:20', 'max:500']
+        return [
+            'email' => ['required', 'exists:users,email']
         ];
     }
 }

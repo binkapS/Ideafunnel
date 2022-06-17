@@ -14,13 +14,13 @@ class CommentController extends Controller
 {
     public function create(CreateCommentRequest $request, Article $article, CommentService $service)
     {
-        $service->create();
+        $service->create($request, $article);
         return \back()->with('status');
     }
 
     public function update(UpdateCommentRequest $request, Comment $comment, CommentService $service)
     {
-        $service->update();
+        $service->update($request, $comment);
         return \back()->with('status');
     }
 

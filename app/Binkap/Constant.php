@@ -13,4 +13,12 @@ class Constant
     public const ARTICLE_TYPE_BREAKING = 100001;
 
     public const ARTICLE_TYPE_UPDATE = 100002;
+
+    public const STATUS_ADMIN = 100200;
+
+    public const ARTICLE_STATUS_APPROVED = 100300;
+
+    public const ARTICLE_STATUS_PENDING = 100301;
+
+    public const ARTICLE_STATUS_REJECTED = 100302;
 }

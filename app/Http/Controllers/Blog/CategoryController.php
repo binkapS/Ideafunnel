@@ -8,10 +8,10 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
-    public function index(string $category)
+    public function index(Category $category)
     {
-        $category = Category::find($category);
         return \view('blog.category', [
+            'category' => $category,
             'articles' => $category->articles()->latest()->paginate(5)
         ]);
     }

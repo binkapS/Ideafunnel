@@ -15,12 +15,16 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/nav.js') }}" defer></script>
 </head>
 
 <body class="min-h-screen bg-gray-100 m-0 antialiased">
 
+    @include('admin.components.header')
+
     <main class="origin-top top-16 relative z-auto h-full">
         @yield('content')
+        @include('admin.components.footer')
     </main>
 
 </body>

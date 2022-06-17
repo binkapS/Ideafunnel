@@ -40,4 +40,24 @@
     .btn-secondary:focus {
         @apply ring-2 ring-gray-400
     }
+
+    .auth-input {
+        @apply p-2 outline-none rounded-md w-full ring-2 ring-gray-400
+    }
+
+    .auth-input:focus {
+        @apply ring-2 ring-blue-500
+    }
+
+    .auth-error {
+        @apply text-red-500 mt-2 text-sm
+    }
+
+    .auth-btn {
+        @apply w-full bg-gray-800 py-1 rounded-md text-gray-300
+    }
+
+    .auth-btn:hover {
+        @apply text-white rounded-sm bg-gray-900
+    }
 }

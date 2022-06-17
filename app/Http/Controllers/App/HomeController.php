@@ -2,25 +2,26 @@
 
 namespace App\Http\Controllers\App;
 
-use App\Binkap\Constant;
 use App\Http\Controllers\Controller;
-use App\Models\Article;
+use App\Service\ArticleService;
+use App\Service\NewsLetterService;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    public function index()
+    public function index(Request $request, ArticleService $service)
     {
-        return \view('app.home', [
-            'trends' => Article::where('views', '>', 50)->orderBy('views', 'desc')->limit(4)->get(),
-            'latests' => Article::latest()->limit(5)->get(),
-            'breakings' => Article::where('type', '=', Constant::ARTICLE_TYPE_BREAKING)->latest()->limit(5)->get(),
-            'updates' => Article::where('type', '=', Constant::ARTICLE_TYPE_UPDATE)->latest()->limit(5)->get()
-        ]);
+        return \view('app.home', $service->fetch());
     }
 
-    public function create(Request $request)
+    public function create(Request $request, NewsLetterService $service)
     {
-        \dd($request);
+        $this->validate($request, [
+            'email' => ['required', 'unique:news_letters,email']
+        ], [
+            'unique' => 'Email has already subscribed'
+        ]);
+        $service->create($request);
+        return \back()->with('status');
     }
 }

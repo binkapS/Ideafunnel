@@ -17,7 +17,8 @@ return new class extends Migration
             $table->string('id')->primary();
             $table->string('article');
             $table->string('author')->nullable();
-            $table->string('body');
+            $table->string('email');
+            $table->text('body');
             $table->timestamps();
             $table->softDeletes();
         });

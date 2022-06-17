@@ -16,8 +16,8 @@ class ArticleController extends Controller
                 'article' => $service->getArticle(),
                 'commentCount' => \count($service->getArticle()->comments ?? []),
                 'tags' => !\is_null($service->getArticle()->tags)
-                    && \str_contains($service->getArticle()->tags, ',')
-                    ? \explode(',', $service->getArticle()->tags)
+                    && \str_contains($service->getArticle()->tags, ' ')
+                    ? \explode(' ', $service->getArticle()->tags)
                     : []
             ]);
         }

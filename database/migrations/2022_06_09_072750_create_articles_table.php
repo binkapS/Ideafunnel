@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('topic')->unique();
             $table->string('category');
             $table->string('type');
+            $table->string('status');
             $table->longText('body');
             $table->string('image')->nullable();
             $table->string('thumbnail')->nullable();
