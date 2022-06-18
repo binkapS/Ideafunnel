@@ -17,10 +17,10 @@
         <div class="p-1 space-y-1.5">
             @foreach ($latests as $latest)
                 <a href="{{ route('article', topic($latest->topic, true)) }}" class="flex flex-row justify-start items-start space-x-2">
-                    @if ($latest->hasThumbnail())
-                        <img height="100" width="100" src="{{ $latest->getThumbNail() }}" alt="">
+                    @if ($latest->hasImage())
+                        <img height="100" width="100" src="{{ $latest->getImage() }}" alt="">
                     @else
-                        <img height="100" width="100" src="{{ asset('images/test.jpg') }}" alt="">
+                        <img height="100" width="100" src="{{ asset('images/logo_icon.png') }}" alt="">
                     @endif
                     <div class="flex flex-col">
                         <div class="flex space-x-2 text-xs text-gray-500">
@@ -40,10 +40,10 @@
         <div class="p-1 space-y-1.5">
             @foreach ($breakings as $breaking)
                 <a href="{{ route('article', topic($breaking->topic, true)) }}" class="flex flex-row justify-start items-start space-x-2">
-                    @if ($breaking->hasThumbnail())
-                        <img height="100" width="100" src="{{ $breaking->getThumbNail() }}" alt="">
+                    @if ($breaking->hasImage())
+                        <img height="100" width="100" src="{{ $breaking->getImage() }}" alt="">
                     @else
-                        <img height="100" width="100" src="{{ asset('images/test.jpg') }}" alt="">
+                        <img height="100" width="100" src="{{ asset('images/logo_icon.png') }}" alt="">
                     @endif
                     <div class="flex flex-col">
                         <div class="flex space-x-2 text-xs text-gray-500">
@@ -63,10 +63,10 @@
         <div class="p-1 space-y-1.5">
             @foreach ($updates as $update)
                 <a href="{{ route('article', topic($update->topic, true)) }}" class="flex flex-row justify-start items-start space-x-2">
-                    @if ($update->hasThumbnail())
-                        <img height="100" width="100" src="{{ $update->getThumbNail() }}" alt="">
+                    @if ($update->hasImage())
+                        <img height="100" width="100" src="{{ $update->getImage() }}" alt="">
                     @else
-                        <img height="100" width="100" src="{{ asset('images/test.jpg') }}" alt="">
+                        <img height="100" width="100" src="{{ asset('images/logo_icon.png') }}" alt="">
                     @endif
                     <div class="flex flex-col">
                         <div class="flex space-x-2 text-xs text-gray-500">

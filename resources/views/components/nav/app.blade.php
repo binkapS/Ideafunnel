@@ -16,5 +16,17 @@
         <li>
             <a href="{{ route('contact') }}" class="nav-link">Contact Us</a>
         </li>
+        @auth()
+        <li>
+            <form action="{{ route('logout') }}" method="post">
+                @csrf
+
+                @method('DELETE')
+                <button class="nav-link">
+                    Logout
+                </button>
+            </form>
+        </li>
+        @endauth
     </ul>
 </div>

@@ -10,15 +10,19 @@ class Constant
 
     public const COMMENT_ID_LENGTH = 20;
 
+    public const USER_ID_LENGTH = 20;
+
     public const ARTICLE_TYPE_BREAKING = 100001;
 
     public const ARTICLE_TYPE_UPDATE = 100002;
 
-    public const STATUS_ADMIN = 100200;
+    public const USER_STATUS_ADMIN = 100200;
 
     public const ARTICLE_STATUS_APPROVED = 100300;
 
     public const ARTICLE_STATUS_PENDING = 100301;
 
     public const ARTICLE_STATUS_REJECTED = 100302;
+
+    public const ARTICLE_IMAGE_STORAGE_PATH = "public";
 }

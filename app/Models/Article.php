@@ -51,23 +51,13 @@ class Article extends Model
         return $this->hasOne(User::class, 'id', 'author');
     }
 
-    public function hasThumbnail(): bool
-    {
-        return !\is_null($this->thumbnail);
-    }
-
     public function hasImage(): bool
     {
         return !\is_null($this->image);
     }
 
-    public function getThumbnail(): string
-    {
-        return Storage::get($this->thumbnail);
-    }
-
     public function getImage(): string
     {
-        return Storage::get($this->image);
+        return Storage::url($this->image);
     }
 }

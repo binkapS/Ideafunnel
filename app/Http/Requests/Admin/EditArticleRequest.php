@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreateCommentRequest extends FormRequest
+class EditArticleRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +13,7 @@ class CreateCommentRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return false;
     }
 
     /**
@@ -23,12 +23,8 @@ class CreateCommentRequest extends FormRequest
      */
     public function rules()
     {
-        return \auth()->guest() ? [
-            'name' => ['required'],
-            'email' => ['required', 'email'],
-            'comment' => ['required', 'min:20', 'max:1000']
-        ] : [
-            'comment' => ['required', 'min:20', 'max:1000']
+        return [
+            //
         ];
     }
 }

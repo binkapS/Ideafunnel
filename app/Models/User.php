@@ -8,6 +8,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Storage;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
@@ -33,6 +34,7 @@ class User extends Authenticatable
         'email',
         'password',
         'image',
+        'about'
     ];
 
     /**
@@ -62,5 +64,20 @@ class User extends Authenticatable
     public function sendEmailVerificationNotification()
     {
         $this->notify(new EmailVerification);
+    }
+
+    public function hasProfileImage(): bool
+    {
+        return !\is_null($this->image);
+    }
+
+    public function getProfileImage(): string
+    {
+        return Storage::get($this->image);
+    }
+
+    public function articles()
+    {
+        return $this->hasMany(Article::class, 'author', 'id');
     }
 }

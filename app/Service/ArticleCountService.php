@@ -21,9 +21,16 @@ class ArticleCountService
         return !\is_null($this->article);
     }
 
-    public function getArticle()
+    public function fetch()
     {
         $this->update();
-        return $this->article;
+        return [
+            'article' => $this->article,
+            'commentCount' => \count($this->article->comments ?? []),
+            'tags' => !\is_null($this->article->tags)
+                && \str_contains($this->article->tags, ' ')
+                ? \explode(' ', $this->article->tags)
+                : []
+        ];
     }
 }

@@ -48,5 +48,14 @@ Route::prefix('/admin')->group(function () {
     Route::middleware('auth.admin')->group(function () {
         Route::get('/dashboard', [AdminDashboardController::class, 'index'])
             ->name('admin.dashboard');
+        Route::get('/article/create', [ArticleController::class, 'showCreate'])
+            ->name('article.create');
+        Route::post('/article/create', [ArticleController::class, 'create']);
+        Route::get('/article/edit/{article}', [ArticleController::class, 'showEdit'])
+            ->name('article.edit');
     });
+    Route::delete('/', function () {
+        auth()->logout();
+        return redirect()->route('home');
+    })->name('logout')->middleware('auth');
 });

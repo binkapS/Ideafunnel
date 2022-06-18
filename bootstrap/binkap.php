@@ -1,10 +1,13 @@
 <?php
 
+use App\Binkap\Pairs;
 use App\Models\Category;
 
-function categories(int $limit = 5)
+function categories(int $limit = null)
 {
-    return Category::limit($limit)->get(['id', 'name']);
+    return \is_null($limit)
+        ? Category::all(['id', 'name'])
+        : Category::limit($limit)->get(['id', 'name']);
 }
 
 function topic(string $topic, bool $output = true)
@@ -16,4 +19,19 @@ function topic(string $topic, bool $output = true)
         return str_replace('%', " ", $topic);
     }
     return str_replace("_", " ", $topic);
+}
+
+function body(string $body, bool $output = true)
+{
+    if ($output) {
+        return html_entity_decode($body);
+    }
+    return htmlentities($body);
+}
+
+function articleType(string|int $key = null)
+{
+    return \is_null($key)
+        ? Pairs::$articleTypes
+        : Pairs::$articleTypes[$key];
 }

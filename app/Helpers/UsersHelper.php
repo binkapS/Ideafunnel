@@ -8,6 +8,6 @@ trait UsersHelper
 {
     public function isAdmin(): bool
     {
-        return $this->status == Constant::STATUS_ADMIN;
+        return $this->status == Constant::USER_STATUS_ADMIN;
     }
 }

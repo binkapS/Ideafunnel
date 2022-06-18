@@ -19,13 +19,13 @@
             <img class="rounded-md" src="{{ $article->getImage() }}" alt="{{ $article->topic }}">
         @endif
         <p class="text-gray-700">
-            {!! $article->body !!}
+            {!! body($article->body, true) !!}
         </p>
         @if (count($tags) > 0)
             <div class="flex justify-start items-center w-full mt-3 space-x-2">
             <i class="fa fa-tag text-gray-500"></i>
             @foreach ($tags as $tag)
-                <a href="{{ route('tag', $tag) }}" class="bg-lime-500 py-0.5 px-1 text-white rounded-md -skew-x-6 text-xs text-center">
+                <a href="{{ route('tag', $tag) }}" class="bg-lime-500 py-0.5 px-1 text-white rounded-sm text-xs text-center">
                     {{ $tag }}
                 </a>
             @endforeach
@@ -43,9 +43,9 @@
                         <i class="fa fa-user-o"> {{ $comment->author }}</i>
                         <i class="fa fa-clock-o">  {{ $comment->created_at->diffForHumans() }}</i>
                     </div>
-                    <div class="flex bg-gray-100 p-1 border-l-8 border-gray-400 text-gray-600 w-full">
+                    <div class="bg-gray-100 p-1 border-l-4 border-gray-400 text-gray-600 mx-1 w-full">
                         <span class="flex-none text-sm">
-                            <?= $comment->body ?>
+                            {!! body($comment->body, true) !!}
                         </span>
                     </div>
                 @endforeach
@@ -130,7 +130,7 @@
                     class="w-full ring-1 ring-lime-500 rounded-md text-gray-800 p-2"
                     rows="5"
                     required
-                    maxlength="500"
+                    maxlength="1000"
                     minlength="20"
                     @error('comment')
                         autofocus
@@ -148,7 +148,7 @@
                     type="submit"
                     class="uppercase bg-lime-400 px-3 text-white rounded-md outline-none text-sm"
                     >
-                    Comment
+                    Post Comment
                     </button>
                </div>
             </form>

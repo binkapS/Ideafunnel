@@ -38,7 +38,7 @@ return new class extends Migration
             'id' => Str::random(),
             'name' => "Binkap Ponmwa Shetur",
             'username' => 'Binkap',
-            'status' => Constant::STATUS_ADMIN,
+            'status' => Constant::USER_STATUS_ADMIN,
             'email' => 'Binkap@gmail.com',
             'password' => Hash::make('Password')
         ]);
