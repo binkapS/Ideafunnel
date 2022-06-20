@@ -24,7 +24,7 @@ function topic(string $topic, bool $output = true)
 function body(string $body, bool $output = true)
 {
     if ($output) {
-        return html_entity_decode($body);
+        return nl2br(html_entity_decode($body));
     }
     return htmlentities($body);
 }

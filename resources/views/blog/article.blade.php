@@ -16,10 +16,10 @@
             </div>
         </div>
         @if ($article->hasImage())
-            <img class="rounded-md" src="{{ $article->getImage() }}" alt="{{ $article->topic }}">
+            <img class="rounded-md max-w-xs max-h-60 md:max-w-lg md:max-h-96 mb-3" src="{{ $article->getImage() }}" alt="{{ $article->topic }}">
         @endif
-        <p class="text-gray-700">
-            {!! body($article->body, true) !!}
+        <p class="block flex-none text-gray-700">
+            <?= body($article->body, true) ?>
         </p>
         @if (count($tags) > 0)
             <div class="flex justify-start items-center w-full mt-3 space-x-2">
@@ -39,11 +39,11 @@
             </div>
             <div class="hidden flex-col space-y-2 justify-start items-start w-full" id="comments-main">
                 @foreach ($article->comments as $comment)
-                    <div class="flex space-x-3 text-gray-500">
+                    <div class="flex space-x-3 text-gray-500 text-sm">
                         <i class="fa fa-user-o"> {{ $comment->author }}</i>
                         <i class="fa fa-clock-o">  {{ $comment->created_at->diffForHumans() }}</i>
                     </div>
-                    <div class="bg-gray-100 p-1 border-l-4 border-gray-400 text-gray-600 mx-1 w-full">
+                    <div class="attention">
                         <span class="flex-none text-sm">
                             {!! body($comment->body, true) !!}
                         </span>

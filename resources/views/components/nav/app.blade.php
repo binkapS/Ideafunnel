@@ -7,15 +7,17 @@
                 </li>
             @endif
         @endauth
-        <li>
-            <a href="{{ route('home') }}" class="nav-link">Home</a>
-        </li>
-        <li>
-            <a href="{{ route('about') }}" class="nav-link">About Us</a>
-        </li>
-        <li>
-            <a href="{{ route('contact') }}" class="nav-link">Contact Us</a>
-        </li>
+        @guest()
+            <li>
+                <a href="{{ route('home') }}" class="nav-link">Home</a>
+            </li>
+            <li>
+                <a href="{{ route('about') }}" class="nav-link">About Us</a>
+            </li>
+            <li>
+                <a href="{{ route('contact') }}" class="nav-link">Contact Us</a>
+            </li>
+        @endguest
         @auth()
         <li>
             <form action="{{ route('logout') }}" method="post">

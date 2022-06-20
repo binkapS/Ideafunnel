@@ -16,22 +16,23 @@ class CreateArticleService
     {
         $this->request = $request;
         if ($this->publish()) {
-            $this->publishArticle();
+            return $this->publishArticle();
         }
         if ($this->draft()) {
-            $this->draftArticle();
+            return $this->draftArticle();
         }
     }
 
     private function draft(): bool
     {
         return isset($this->request->draft)
-            && \is_null($this->request->draft);
+            && \is_string($this->request->draft);
     }
 
     private function publish(): bool
     {
-        return \is_null($this->request->publish);
+        return isset($this->request->publish)
+            && \is_string($this->request->publish);
     }
 
     private function hasImage(): bool
@@ -41,22 +42,35 @@ class CreateArticleService
 
     private function publishArticle()
     {
-        $reselt =  $this->request->user()->articles()->create([
-            'id' => $this->id = Str::random(Constant::ARTICLE_ID_LENGTH),
-            'topic' => $this->request->topic,
-            'body' => $this->request->body,
-            'category' => $this->request->category,
-            'image' => $this->getImage(),
-            'tags' => $this->request->tags,
-            'type' => $this->request->type,
-            'status' => $this->getStatus()
-        ]);
-        \dd($reselt);
+        return $this->request
+            ->user()
+            ->articles()
+            ->create([
+                'id' => $this->generateId(),
+                'topic' => $this->request->topic,
+                'body' => \body($this->request->body, \false),
+                'category' => $this->request->category,
+                'image' => $this->getImage(),
+                'tags' => $this->request->tags,
+                'type' => $this->request->type,
+                'status' => $this->getStatus()
+            ]);
     }
 
     private function draftArticle()
     {
-        \dd($this->request);
+        return $this->request
+            ->user()
+            ->drafts()
+            ->create([
+                'id' => $this->generateId(),
+                'topic' => $this->request->topic,
+                'image' => $this->getImage(),
+                'tags' => $this->request->tags,
+                'body' => \body($this->request->body, \false),
+                'category' => $this->request->category,
+                'type' => $this->request->type
+            ]);
     }
 
     private function getImage(): string|null
@@ -68,10 +82,15 @@ class CreateArticleService
         return null;
     }
 
-    public function getStatus()
+    private function getStatus()
     {
         return $this->request->user()->isAdmin()
             ? Constant::ARTICLE_STATUS_APPROVED
             : Constant::ARTICLE_STATUS_PENDING;
+    }
+
+    private function generateId()
+    {
+        return $this->id = Str::random(Constant::ARTICLE_ID_LENGTH);
     }
 }

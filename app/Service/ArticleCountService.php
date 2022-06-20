@@ -17,8 +17,7 @@ class ArticleCountService
 
     public function validate(string $article): bool
     {
-        $this->article = Article::with(['comments', 'cat', 'aut'])->find(\topic($article, false));
-        return !\is_null($this->article);
+        return !\is_null($this->article = Article::with(['comments', 'cat', 'aut'])->find(\topic($article, false)));
     }
 
     public function fetch()

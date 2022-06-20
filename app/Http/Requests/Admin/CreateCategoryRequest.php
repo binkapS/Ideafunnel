@@ -4,7 +4,7 @@ namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreateArticleRequest extends FormRequest
+class CreateCategoryRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,14 +23,8 @@ class CreateArticleRequest extends FormRequest
      */
     public function rules()
     {
-        $rules = [
-            'topic' => ['required', 'unique:articles,topic'],
-            'body' => ['required'],
-            'tags' => ['nullable']
+        return [
+            //
         ];
-        if (!\is_null($this->file('image'))) {
-            $rules['image'] = ['mimes:png,jpg,jpeg'];
-        }
-        return $rules;
     }
 }

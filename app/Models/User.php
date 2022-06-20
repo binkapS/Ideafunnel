@@ -80,4 +80,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Article::class, 'author', 'id');
     }
+
+    public function drafts()
+    {
+        return $this->hasMany(Draft::class, 'author', 'id');
+    }
 }

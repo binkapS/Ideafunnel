@@ -1,11 +1,16 @@
 <?php
 
+use App\Http\Controllers\Admin\ArticleController as AdminArticleController;
+use App\Http\Controllers\Admin\ArticleTrashController;
+use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
+use App\Http\Controllers\Admin\DraftController;
+use App\Http\Controllers\Admin\DraftTrashController;
+use App\Http\Controllers\Admin\TrashController;
 use App\Http\Controllers\App\AboutController;
 use App\Http\Controllers\App\ContactController;
 use App\Http\Controllers\App\HomeController;
 use App\Http\Controllers\Auth\Admin\LoginController as AdminLoginController;
-use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Blog\ArticleController;
 use App\Http\Controllers\Blog\AuthorProfileController;
 use App\Http\Controllers\Blog\CategoryController;
@@ -48,11 +53,35 @@ Route::prefix('/admin')->group(function () {
     Route::middleware('auth.admin')->group(function () {
         Route::get('/dashboard', [AdminDashboardController::class, 'index'])
             ->name('admin.dashboard');
-        Route::get('/article/create', [ArticleController::class, 'showCreate'])
+        Route::get('/articles', [AdminArticleController::class, 'index'])
+            ->name('admin.articles');
+        Route::get('/drafts', [DraftController::class, 'index'])
+            ->name('admin.drafts');
+        Route::get('/draft/{draft}', [DraftController::class, 'show'])
+            ->name('admin.draft');
+        Route::delete('/draft/{draft}', [DraftController::class, 'delete']);
+        Route::post('/draft/{draft}', [DraftController::class, 'publish']);
+        Route::get('/draft/{draft}/edit', [DraftController::class, 'show'])
+            ->name('draft.edit');
+        Route::get('/article/create', [ArticleController::class, 'show'])
             ->name('article.create');
         Route::post('/article/create', [ArticleController::class, 'create']);
-        Route::get('/article/edit/{article}', [ArticleController::class, 'showEdit'])
+        Route::get('/article/{article}/edit', [AdminArticleController::class, 'show'])
             ->name('article.edit');
+        Route::delete('/article/{article}', [AdminArticleController::class, 'delete'])
+            ->name('article.delete');
+        Route::get('/categories', [AdminCategoryController::class, 'index'])
+            ->name('admin.categories');
+        Route::post('/categories', [AdminCategoryController::class, 'create']);
+        Route::get('/category/{category}', [AdminCategoryController::class, 'show'])
+            ->name('admin.category');
+        Route::post('/category/{category}', [AdminCategoryController::class, 'update']);
+        Route::get('/trash', [TrashController::class, 'index'])
+            ->name('trash');
+        Route::get('/trash/{article}/article', [ArticleTrashController::class, 'index'])
+            ->name('trash.article');
+        Route::get('/trash/{draft}/draft', [DraftTrashController::class, 'index'])
+            ->name('trash.draft');
     });
     Route::delete('/', function () {
         auth()->logout();

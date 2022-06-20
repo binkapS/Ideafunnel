@@ -22,19 +22,15 @@ class ArticleController extends Controller
         return Response::deny('Article not found', 404)->view();
     }
 
-    public function showCreate()
+    public function show()
     {
         return \view('admin.article-create');
-    }
-
-    public function showEdit(Article $article)
-    {
-        return \view('admin.article-edit', ['article' => $article]);
     }
 
     public function create(CreateArticleRequest $request, CreateArticleService $service)
     {
         $service->handle($request);
+        return \back()->with('status');
     }
 
     public function update(EditArticleRequest $request)

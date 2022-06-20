@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-<div class="bg-white p-3 m-2 overflow-y-scroll">
+<div class="bg-white p-3 m-2 overflow-y-scroll h-screen">
     <div class="flex justify-center font-bold uppercase text-lg text-gray-500 mb-2">
         Write New Article
     </div>
@@ -16,9 +16,12 @@
             name="topic"
             placeholder="Article topic"
             value="{{ old('topic') }}"
-            class="p-2 text-gray-800 outline-none border-2 border-lime-500 rounded-md"
+            class="p-2 text-gray-800 outline-none border-2 border-gray-700 rounded-md"
             required
             >
+            @error('topic')
+                <span class="auth-error">{{ $message }}</span>
+            @enderror
         </div>
 
         <div class="flex flex-col mb-2">
@@ -31,13 +34,16 @@
             class="hidden"
             id="article-image"
             >
-            <div id="article-image-repre" class="flex border-2 border-dashed border-lime-500 rounded-md px-2 py-5 justify-center items-center">
-                <i class="fa fa-image text-lime-500 uppercase"> Upload Image</i>
+            <div id="article-image-repre" class="flex border-2 border-dashed border-gray-700 rounded-md px-2 py-5 justify-center items-center">
+                <i class="fa fa-image text-gray-700 uppercase"> Upload Image</i>
             </div>
-            <div id="upload-status" class="hidden bg-lime-500 rounded-md p-2 text-white justify-between items-center">
+            <div id="upload-status" class="hidden bg-gray-700 rounded-md p-2 text-white justify-between items-center">
                 <i id="upload-name" class="fa fa-image"></i>
                 <span id="upload-progress"></span>
             </div>
+            @error('image')
+                <span class="auth-error">{{ $message }}</span>
+            @enderror
             <script>
                 const articleImage = document.querySelector("#article-image"),
                     representative = document.querySelector("#article-image-repre"),
@@ -80,14 +86,17 @@
             name="body"
             cols="30"
             rows="10"
-            class="p-2 text-gray-800 outline-none border-2 border-lime-500 rounded-md"
+            class="p-2 text-gray-800 outline-none border-2 border-gray-700 rounded-md"
             placeholder="Write article here"
             required
             >{!! old('body') !!}</textarea>
+            @error('body')
+                <span class="auth-error">{{ $message }}</span>
+            @enderror
         </div>
 
         <div class="flex flex-col mb-2">
-            <select name="category" class="p-2.5 bg-white outline-none border-2 border-lime-500 rounded-md font-semibold uppercase text-gray-400">
+            <select name="category" class="p-2.5 bg-white outline-none border-2 border-gray-700 rounded-md font-semibold uppercase text-gray-400">
                 @foreach (categories() as $category)
                     <option value="{{ $category->id }}">{{ $category->name }}</option>
                 @endforeach
@@ -95,7 +104,7 @@
         </div>
 
         <div class="flex flex-col mb-2">
-            <select name="type" class="p-2.5 bg-white outline-none border-2 border-lime-500 rounded-md font-semibold uppercase text-gray-400">
+            <select name="type" class="p-2.5 bg-white outline-none border-2 border-gray-700 rounded-md font-semibold uppercase text-gray-400">
                 @foreach (articleType() as $key => $value)
                     <option value="{{ $key }}">{{ $value }}</option>
                 @endforeach
@@ -108,12 +117,18 @@
             type="text"
             name="tags"
             placeholder="Enter tags here, seperate with space eg: Space Phones Money"
-            class="p-2 text-gray-800 outline-none border-2 border-lime-500 rounded-md">
+            class="p-2 text-gray-800 outline-none border-2 border-gray-700 rounded-md">
+            @error('tags')
+                <span class="auth-error">{{ $message }}</span>
+            @enderror
         </div>
         <div class="flex justify-between w-full items-center">
-            <button name="draft" class="btn-primary" type="submit">Save as draft</button>
-            <button name="publish" class="btn-primary" type="submit">Publish</button>
+            <input type="submit" value="Save as draft" class="btn-primary" name="draft">
+            <input type="submit" value="Publish" class="btn-primary" name="publish">
         </div>
+        <script>
+
+        </script>
     </form>
 </div>
 @endsection

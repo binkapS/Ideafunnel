@@ -5,13 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Support\Facades\Storage;
 
-class Article extends Model
+class Draft extends Model
 {
     use HasFactory, SoftDeletes;
-
-    protected $primaryKey = 'topic';
 
     protected $keyType = 'string';
 
@@ -26,24 +23,12 @@ class Article extends Model
         'id',
         'author',
         'topic',
-        'category',
         'image',
         'body',
-        'type',
         'tags',
-        'views',
-        'status'
+        'category',
+        'type'
     ];
-
-    public function cat()
-    {
-        return $this->hasOne(Category::class, 'id', 'category');
-    }
-
-    public function comments()
-    {
-        return $this->hasMany(Comment::class, 'article', 'id');
-    }
 
     public function aut()
     {
@@ -53,10 +38,5 @@ class Article extends Model
     public function hasImage(): bool
     {
         return !\is_null($this->image);
-    }
-
-    public function getImage(): string
-    {
-        return Storage::url($this->image);
     }
 }
