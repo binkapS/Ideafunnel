@@ -12,8 +12,9 @@ class ArticleService
         return [
             'trends' => Article::with('aut')
                 ->where('status', '=', Constant::ARTICLE_STATUS_APPROVED)
-                ->where('views', '>', 50)->orderBy('views', 'desc')
-                ->limit(4)
+                ->where('views', '>', 50)
+                ->orderBy('views', 'desc')
+                ->limit(5)
                 ->get(),
             'latests' => Article::with('aut')
                 ->where('status', '=', Constant::ARTICLE_STATUS_APPROVED)

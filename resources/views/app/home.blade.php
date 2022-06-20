@@ -10,26 +10,26 @@
             <?php
             $ttArray = [];
             foreach ([0, 1, 2] as $key) {
-                    if (array_key_exists($key, $latests->toArray())) {
-                        $ttArray[] = $latests[$key];
+                    if (array_key_exists($key, $trends->toArray())) {
+                        $ttArray[] = $trends[$key];
                     }
                 }
             $tArray = [];
                 foreach ([3, 4] as $key) {
-                    if (array_key_exists($key, $latests->toArray())) {
-                        $tArray[] = $latests[$key];
+                    if (array_key_exists($key, $trends->toArray())) {
+                        $tArray[] = $trends[$key];
                     }
                 }
             ?>
             <div class="h-2/3 flex justify-center items-center">
-                @foreach ($ttArray as $latest)
-                    <a id="slides" href="{{ route('article', topic($latest->topic, true)) }}" class="hidden justify-center items-center p-2 bg-slate-600 relative -top-3 flex-col max-h-fit">
-                        @if ($latest->hasImage())
-                            <img width="300" height="300" src="{{ $latest->getImage() }}" alt="">
+                @foreach ($ttArray as $trend)
+                    <a id="slides" href="{{ route('article', topic($trend->topic, true)) }}" class="hidden justify-center items-center p-2 bg-slate-600 relative -top-3 flex-col max-h-fit">
+                        @if ($trend->hasImage())
+                            <img width="300" height="300" src="{{ $trend->getImage() }}" alt="">
                         @endif
                         <div class="uppercase text-white">
-                        <span class="font-semibold">{{ articleType($latest->type) }}: </span>
-                        <span class="text-sm">{{ $latest->topic }}</span>
+                        <span class="font-semibold">{{ articleType($trend->type) }}: </span>
+                        <span class="text-sm">{{ $trend->topic }}</span>
                         </div>
                     </a>
                 @endforeach

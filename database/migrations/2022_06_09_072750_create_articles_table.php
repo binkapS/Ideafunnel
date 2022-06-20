@@ -23,7 +23,7 @@ return new class extends Migration
             $table->longText('body');
             $table->string('image')->nullable();
             $table->string('tags')->nullable();
-            $table->string('views')->default(0);
+            $table->integer('views')->default(0);
             $table->timestamps();
             $table->softDeletes();
         });

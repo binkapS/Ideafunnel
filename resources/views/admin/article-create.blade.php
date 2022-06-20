@@ -29,7 +29,7 @@
             <input
             type="file"
             name="image"
-            accept="image/jpg, image/png/, image/png"
+            accept="image/jpg, image/png, image/jpeg"
             hidden
             class="hidden"
             id="article-image"

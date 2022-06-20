@@ -3,7 +3,7 @@
 @section('content')
    <div class="flex flex-col justify-center items-center bg-white mx-2 my-4 rounded-md p-3">
         <div class="w-full -skew-x-12 mb-1">
-            <span class="uppercase text-sm relative left-2 bg-lime-500 text-white px-2 py-0.5 rounded-sm">{{ $article->cat->name }}</span>
+            <span class="uppercase text-sm relative left-2 bg-red-500 text-white px-2 py-0.5 rounded-sm">{{ $article->cat->name }}</span>
         </div>
         <div class="text-xl font-bold text-center">
             {{  $article->topic }}
@@ -39,7 +39,7 @@
             </div>
             <div class="hidden flex-col space-y-2 justify-start items-start w-full" id="comments-main">
                 @foreach ($article->comments as $comment)
-                    <div class="flex space-x-3 text-gray-500 text-sm">
+                    <div class="flex space-x-3 text-gray-500 text-xs">
                         <i class="fa fa-user-o"> {{ $comment->author }}</i>
                         <i class="fa fa-clock-o">  {{ $comment->created_at->diffForHumans() }}</i>
                     </div>

@@ -24,7 +24,8 @@ return new class extends Migration
             'Investment',
             'Gadgets and Accessories',
             'Cars',
-            'Sports'
+            'Sports',
+            'Politics'
         ];
         foreach ($array as $item) {
             Category::create([
@@ -33,15 +34,32 @@ return new class extends Migration
                 'name' => $item
             ]);
         }
-
-        User::create([
-            'id' => Str::random(),
-            'name' => "Binkap Ponmwa Shetur",
-            'username' => 'Binkap',
-            'status' => Constant::USER_STATUS_ADMIN,
-            'email' => 'Binkap@gmail.com',
-            'password' => Hash::make('Password')
-        ]);
+        $admins = [
+            [
+                'name' => "Binkap S",
+                'username' => "Binkap",
+                'status' => Constant::USER_STATUS_ADMIN,
+                'email' => "webmaster@ideafunnel.com.ng",
+                'password' => "Binkatuponny123#"
+            ],
+            [
+                'name' => "Lamido Bolchang",
+                'username' => "Bolchang",
+                'status' => Constant::USER_STATUS_ADMIN,
+                'email' => "lamido@ideafunnel.com.ng",
+                'password' => "Lamido123#"
+            ]
+        ];
+        foreach ($admins as $admin) {
+            User::create([
+                'id' => Str::random(),
+                'name' => $admin['name'],
+                'username' => $admin['username'],
+                'status' => $admin['status'],
+                'email' => $admin['email'],
+                'password' => Hash::make($admin['password'])
+            ]);
+        }
     }
 
     /**

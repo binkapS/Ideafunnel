@@ -20,5 +20,8 @@
             Not article found
         </span>
     @endforelse
+    <div class="flex w-full items-center p-1 justify-between">
+        {{ $articles->links() }}
+    </div>
 </div>
 @endsection
