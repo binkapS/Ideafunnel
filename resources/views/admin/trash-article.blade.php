@@ -1,5 +1,5 @@
 @extends('layouts.admin')
 
 @section('content')
-{{ $article }}
+    {{ dd($article) }}
 @endsection

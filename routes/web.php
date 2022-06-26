@@ -41,9 +41,6 @@ Route::put('/article/{comment}', [CommentController::class, 'update'])
 Route::delete('/article/{comment}', [CommentController::class, 'reply'])
     ->name('comment.reply');
 
-Route::middleware('guest')->prefix('/admin')->group(function () {
-});
-
 Route::prefix('/admin')->group(function () {
     Route::middleware('guest')->group(function () {
         Route::get('/login', [AdminLoginController::class, 'index'])
@@ -59,7 +56,8 @@ Route::prefix('/admin')->group(function () {
             ->name('admin.drafts');
         Route::get('/draft/{draft}', [DraftController::class, 'show'])
             ->name('admin.draft');
-        Route::delete('/draft/{draft}', [DraftController::class, 'delete']);
+        Route::delete('/draft/{draft}', [DraftController::class, 'delete'])
+            ->name('draft.delete');
         Route::post('/draft/{draft}', [DraftController::class, 'publish']);
         Route::get('/draft/{draft}/edit', [DraftController::class, 'show'])
             ->name('draft.edit');
@@ -80,8 +78,12 @@ Route::prefix('/admin')->group(function () {
             ->name('trash');
         Route::get('/trash/{article}/article', [ArticleTrashController::class, 'index'])
             ->name('trash.article');
+        Route::post('/trash/{article}/article', [ArticleTrashController::class, 'restore']);
+        Route::delete('/trash/{article}/article', [ArticleTrashController::class, 'delete']);
         Route::get('/trash/{draft}/draft', [DraftTrashController::class, 'index'])
             ->name('trash.draft');
+        Route::post('/trash/{draft}/draft', [DraftTrashController::class, 'restore']);
+        Route::delete('/trash/{draft}/draft', [DraftTrashController::class, 'delete']);
     });
     Route::delete('/', function () {
         auth()->logout();

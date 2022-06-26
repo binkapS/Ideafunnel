@@ -73,7 +73,7 @@ class User extends Authenticatable
 
     public function getProfileImage(): string
     {
-        return Storage::get($this->image);
+        return Storage::url($this->image);
     }
 
     public function articles()
