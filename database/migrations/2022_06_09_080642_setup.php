@@ -20,7 +20,7 @@ return new class extends Migration
     {
         $array = [
             'Technology',
-            'Bussiness',
+            'Business',
             'Investment',
             'Gadgets and Accessories',
             'Cars',
