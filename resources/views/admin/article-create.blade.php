@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-    <div class="bg-white p-3 m-2 overflow-y-scroll h-screen">
+    <div class="bg-white p-3 m-2 overflow-y-scroll h-fit">
         <div class="flex justify-center font-bold uppercase text-lg text-gray-500 mb-2">
             Write New Article
         </div>

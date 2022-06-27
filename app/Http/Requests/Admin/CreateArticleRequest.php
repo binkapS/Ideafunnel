@@ -28,9 +28,9 @@ class CreateArticleRequest extends FormRequest
             'body' => ['required'],
             'tags' => ['nullable']
         ];
-        if (!\is_null($this->file('image'))) {
-            $rules['image'] = ['mimes:png,jpg,jpeg'];
-        }
+        // if (!\is_null($this->file('image'))) {
+        //     $rules['image'] = ['mimes:png,jpg,jpeg'];
+        // }
         return $rules;
     }
 }
