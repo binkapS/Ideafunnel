@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Binkap\Constant;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
@@ -18,9 +19,10 @@ class CategoryFactory extends Factory
      */
     public function definition()
     {
+        $users = User::all('id');
         return [
             'id' => Str::random(Constant::CATEGORY_ID_LENGTH),
-            'author' => 'admin',
+            'author' => $users[0]->id,
             'name' => $this->faker->word()
         ];
     }

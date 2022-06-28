@@ -31,4 +31,9 @@ class Category extends Model
     {
         return $this->hasMany(Article::class, 'category', 'id');
     }
+
+    public function creator()
+    {
+        return $this->hasOne(User::class, 'id', 'author');
+    }
 }

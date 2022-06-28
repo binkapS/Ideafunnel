@@ -12,7 +12,7 @@ class CategoryController extends Controller
     {
         return \view('blog.category', [
             'category' => $category,
-            'articles' => $category->articles()->latest()->paginate(5)
+            'articles' => $category->articles()->latest()->paginate(6)
         ]);
     }
 }

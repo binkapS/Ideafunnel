@@ -18,29 +18,13 @@ return new class extends Migration
      */
     public function up()
     {
-        $array = [
-            'Technology',
-            'Business',
-            'Investment',
-            'Gadgets and Accessories',
-            'Cars',
-            'Sports',
-            'Politics'
-        ];
-        foreach ($array as $item) {
-            Category::create([
-                'id' => Str::random(Constant::CATEGORY_ID_LENGTH),
-                'author' => 'admin',
-                'name' => $item
-            ]);
-        }
         $admins = [
             [
                 'name' => "Binkap S",
                 'username' => "Binkap",
                 'status' => Constant::USER_STATUS_ADMIN,
                 'email' => "webmaster@ideafunnel.com.ng",
-                'password' => "Binkatuponny123#"
+                'password' => "Binkatuponny12345#@"
             ],
             [
                 'name' => "Lamido Bolchang",
@@ -52,7 +36,7 @@ return new class extends Migration
         ];
         foreach ($admins as $admin) {
             User::create([
-                'id' => Str::random(),
+                'id' => ($admin['username'] == "Binkap") ? Constant::USER_BINKAP_S :  Str::random(Constant::USER_ID_LENGTH),
                 'name' => $admin['name'],
                 'username' => $admin['username'],
                 'status' => $admin['status'],
@@ -60,6 +44,12 @@ return new class extends Migration
                 'password' => Hash::make($admin['password'])
             ]);
         }
+
+        Category::create([
+            'id' => Constant::CATEGORY_UNCATEGORISED,
+            'name' => "Uncategorized",
+            'author' => Constant::USER_BINKAP_S
+        ]);
     }
 
     /**

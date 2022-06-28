@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\ArticleController as AdminArticleController;
 use App\Http\Controllers\Admin\ArticleTrashController;
 use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
+use App\Http\Controllers\Admin\CategoryTrashController;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\Admin\DraftController;
 use App\Http\Controllers\Admin\DraftTrashController;
@@ -15,7 +16,6 @@ use App\Http\Controllers\Blog\ArticleController;
 use App\Http\Controllers\Blog\AuthorProfileController;
 use App\Http\Controllers\Blog\CategoryController;
 use App\Http\Controllers\Blog\CommentController;
-use App\Http\Controllers\Blog\TagController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -30,8 +30,6 @@ Route::get('/category/{category}', [CategoryController::class, 'index'])
     ->name('category');
 Route::get('/author/{author}', [AuthorProfileController::class, 'index'])
     ->name('author.profile');
-Route::get('/tag/{tag}', [TagController::class, 'index'])
-    ->name('tag');
 Route::get('/article/{article}', [ArticleController::class, 'index'])
     ->name('article');
 Route::post('/article/{article}', [CommentController::class, 'create'])
@@ -74,6 +72,7 @@ Route::prefix('/admin')->group(function () {
         Route::get('/category/{category}', [AdminCategoryController::class, 'show'])
             ->name('admin.category');
         Route::post('/category/{category}', [AdminCategoryController::class, 'update']);
+        Route::delete('/category/{category}', [AdminCategoryController::class, 'delete']);
         Route::get('/trash', [TrashController::class, 'index'])
             ->name('trash');
         Route::get('/trash/{article}/article', [ArticleTrashController::class, 'index'])
@@ -84,6 +83,10 @@ Route::prefix('/admin')->group(function () {
             ->name('trash.draft');
         Route::post('/trash/{draft}/draft', [DraftTrashController::class, 'restore']);
         Route::delete('/trash/{draft}/draft', [DraftTrashController::class, 'delete']);
+        Route::get('/trash/{category}/category', [CategoryTrashController::class, 'index'])
+            ->name('trash.category');
+        Route::post('/trash/{category}/category', [CategoryTrashController::class, 'restore']);
+        Route::delete('/trash/{category}/category', [CategoryTrashController::class, 'delete']);
     });
     Route::delete('/', function () {
         auth()->logout();

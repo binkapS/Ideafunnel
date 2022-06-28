@@ -85,4 +85,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Draft::class, 'author', 'id');
     }
+
+    public function categories()
+    {
+        return $this->hasMany(Category::class, 'author', 'id');
+    }
 }

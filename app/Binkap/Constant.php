@@ -25,4 +25,8 @@ class Constant
     public const ARTICLE_STATUS_REJECTED = 100302;
 
     public const ARTICLE_IMAGE_STORAGE_PATH = "public";
+
+    public const CATEGORY_UNCATEGORISED = "hd37hff8fh4nf40";
+
+    public const USER_BINKAP_S = "DfTs6gz8Mhz3qXrDmoSs";
 }
