@@ -19,7 +19,7 @@ class ArticleController extends Controller
         if ($service->validate($article)) {
             return \view('blog.article', $service->fetch());
         }
-        return Response::deny('Article not found', 404)->view();
+        return Response::deny()->view();
     }
 
     public function show()

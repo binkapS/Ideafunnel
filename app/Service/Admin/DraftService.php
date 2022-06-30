@@ -14,11 +14,11 @@ class DraftService
     {
         if ($request->user()->isAdmin()) {
             return [
-                'drafts' => Draft::paginate(5)
+                'drafts' => Draft::latest()->paginate(5)
             ];
         }
         return [
-            'drafts' => $request->user()->drafts()->paginate(5)
+            'drafts' => $request->user()->drafts()->latest()->paginate(5)
         ];
     }
 

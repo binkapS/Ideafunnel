@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-
+    <div class="flex justify-center items-center h-screen">
+        {{ 'Contact ' . config('app.name') }}
+    </div>
 @endsection

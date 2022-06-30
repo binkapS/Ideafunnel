@@ -11,11 +11,17 @@ class ArticleService
     {
         if ($request->user()->isAdmin()) {
             return [
-                'articles' => Article::with(['comments'])->paginate(5)
+                'articles' => Article::with(['comments'])
+                    ->latest()
+                    ->paginate(5)
             ];
         }
         return [
-            'articles' => $request->user()->articles()->with(['comments'])->paginate(5)
+            'articles' => $request->user()
+                ->articles()
+                ->with(['comments'])
+                ->latest()
+                ->paginate(5)
         ];
     }
 

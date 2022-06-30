@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ $title ?? config('app.name') }}</title>
+    <title>@yield('title')</title>
 
     <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('scss/app.css') }}">
@@ -23,8 +23,14 @@
     @include('components.header.app')
 
     <main class="origin-top z-0 relative h-full top-14">
-        @yield('content')
-
+        <div class="h-full flex justify-center items-center my-60">
+            <div
+                class="space-x-1 bg-white px-3 py-5 text-2xl font-semibold rounded-md text-gray-600 border-2 border-gray-700">
+                <span>@yield('code')</span>
+                <span>|</span>
+                <span>@yield('message')</span>
+            </div>
+        </div>
         @include('components.footer.app')
     </main>
 
