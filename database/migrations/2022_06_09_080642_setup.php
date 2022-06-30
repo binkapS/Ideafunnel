@@ -24,7 +24,7 @@ return new class extends Migration
                 'username' => "Binkap",
                 'status' => Constant::USER_STATUS_ADMIN,
                 'email' => "webmaster@ideafunnel.com.ng",
-                'password' => "Binkatuponny12345#@"
+                'password' => "Binkatuponny12345#"
             ],
             [
                 'name' => "Lamido Bolchang",

@@ -2,10 +2,10 @@
 
 namespace App\Models;
 
+use App\Binkap\Image;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Support\Facades\Storage;
 
 class Article extends Model
 {
@@ -57,6 +57,6 @@ class Article extends Model
 
     public function getImage(): string
     {
-        return Storage::url($this->image);
+        return (new Image)->url($this->image);
     }
 }

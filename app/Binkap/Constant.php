@@ -24,7 +24,7 @@ class Constant
 
     public const ARTICLE_STATUS_REJECTED = 100302;
 
-    public const ARTICLE_IMAGE_STORAGE_PATH = "public";
+    public const ARTICLE_IMAGE_STORAGE_PATH = "blog/article";
 
     public const CATEGORY_UNCATEGORISED = "hd37hff8fh4nf40";
 

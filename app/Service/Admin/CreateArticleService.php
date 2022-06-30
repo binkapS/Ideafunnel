@@ -3,6 +3,7 @@
 namespace App\Service\Admin;
 
 use App\Binkap\Constant;
+use App\Binkap\Image;
 use App\Http\Requests\Admin\CreateArticleRequest;
 use Illuminate\Support\Str;
 
@@ -76,8 +77,8 @@ class CreateArticleService
     private function getImage(): string|null
     {
         if ($this->hasImage()) {
-            return $this->request->file('image')
-                ->store(Constant::ARTICLE_IMAGE_STORAGE_PATH . \DIRECTORY_SEPARATOR . $this->id);
+            return (new Image)
+                ->save($this->request->file('image'), Constant::ARTICLE_IMAGE_STORAGE_PATH . \DIRECTORY_SEPARATOR . $this->id);
         }
         return null;
     }
