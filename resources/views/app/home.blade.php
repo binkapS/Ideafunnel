@@ -25,7 +25,7 @@
                 <div class="h-2/3 flex justify-center items-center">
                     @foreach ($ttArray as $trend)
                         <a id="slides" href="{{ route('article', topic($trend->topic, true)) }}"
-                            class="hidden justify-center items-center p-2 bg-slate-600 relative -top-3 flex-col max-h-fit">
+                            class="hidden justify-center items-center p-2 bg-slate-600 relative -top-3 flex-col max-h-fit w-full">
                             @if ($trend->hasImage())
                                 <img width="300" height="300" src="{{ $trend->getImage() }}" alt="">
                             @else
