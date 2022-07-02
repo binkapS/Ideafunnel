@@ -2,7 +2,7 @@
     <div class="flex flex-wrap justify-between items-center text-gray-300 hover:text-white">
         <img src="{{ auth()->user()->image ?? asset('images/logo_icon.png') }}"
             alt="{{ auth()->user()->username }}'s profile image"
-            class="w-10 h-10 ring-2 rounded-full ring-gray-900 hover:ring-gray-200" onclick="profileNav()">
+            class="w-10 h-10 ring-2 rounded-full ring-gray-900 hover:ring-gray-200" id="profile-toggle">
         @include('components.nav.toggle')
         @include('admin.components.nav')
     </div>

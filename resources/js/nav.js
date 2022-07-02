@@ -1,5 +1,6 @@
 const navToggle = document.querySelector("#nav-toogle"),
-    navMenu = document.querySelector('#mobile-menu');
+    navMenu = document.querySelector('#mobile-menu'),
+    profileToggle = document.querySelector('#profile-toggle');
 var menuActive = false;
 var profileMenuActive = false;
 navToggle.addEventListener('click', () => {
@@ -16,7 +17,7 @@ navToggle.addEventListener('click', () => {
         menuActive = true;
     }
 });
-function profileNav() {
+profileToggle.addEventListener('click', () => {
     let profileMenu = document.querySelector('#profile-menu');
     if (menuActive) {
         navToggle.click();
@@ -28,10 +29,4 @@ function profileNav() {
         profileMenu.style.display = "block";
         profileMenuActive = true;
     }
-}
-
-function dismissSession() {
-    var sessionBody = document.querySelector('session-body');
-
-    sessIOnBody.style.display = "none";
-}
+});
