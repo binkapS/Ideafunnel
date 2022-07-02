@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Binkap\Image;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -38,5 +39,10 @@ class Draft extends Model
     public function hasImage(): bool
     {
         return !\is_null($this->image);
+    }
+
+    public function getImage(): string
+    {
+        return Image::getInstance()->url($this->image);
     }
 }

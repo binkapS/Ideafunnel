@@ -2,9 +2,11 @@
 
 namespace App\Service\Admin;
 
+use App\Binkap\Image;
 use App\Models\Article;
 use App\Models\Category;
 use App\Models\Draft;
+use Directory;
 
 class TrashService
 {
@@ -55,12 +57,27 @@ class TrashService
 
     public function deleteArticle()
     {
+        if ($this->article->hasImage()) {
+            Image::getInstance()->delete($this->article->image);
+            $this->rmdir($this->article->image);
+        }
         return $this->article->forceDelete();
     }
 
     public function deleteDraft()
     {
+        if ($this->draft->hasImage()) {
+            Image::getInstance()->delete($this->draft->image);
+            $this->rmdir($this->draft->image);
+        }
         return $this->draft->forceDelete();
+    }
+
+    private function rmdir(string $directory)
+    {
+        $chunks = \explode(\DIRECTORY_SEPARATOR, $directory);
+        \array_pop($chunks);
+        return Image::getInstance()->rmdir(\implode(\DIRECTORY_SEPARATOR, $chunks));
     }
 
     public function deleteCategory()

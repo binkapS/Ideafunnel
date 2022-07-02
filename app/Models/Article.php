@@ -57,6 +57,6 @@ class Article extends Model
 
     public function getImage(): string
     {
-        return (new Image)->url($this->image);
+        return Image::getInstance()->url($this->image);
     }
 }
