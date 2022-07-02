@@ -5,7 +5,7 @@ var menuActive = false;
 var profileMenuActive = false;
 navToggle.addEventListener('click', () => {
     if (profileMenuActive) {
-        profileNav();
+        profileToggle.click();
     }
     if (menuActive) {
         navToggle.innerHTML = '<i class="fa fa-bars"></i>';
