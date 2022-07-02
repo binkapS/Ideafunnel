@@ -76,9 +76,8 @@
 
             <div class="flex flex-col mb-2">
                 <label class="sr-only" for="body">Body</label>
-                <textarea name="body" cols="30" rows="10"
-                    class="p-2 text-gray-800 outline-none border-2 border-gray-700 rounded-md" placeholder="Write article here"
-                    required>{!! old('body') !!}</textarea>
+                <textarea id="myeditorinstance" name="body" cols="30" rows="10"
+                    class="p-2 text-gray-800 outline-none border-2 border-gray-700 rounded-md" placeholder="Write article here"></textarea>
                 @error('body')
                     <span class="auth-error">{{ $message }}</span>
                 @enderror
@@ -112,10 +111,9 @@
                 @enderror
             </div>
             <div class="flex justify-between w-full items-center">
-                <input type="submit" value="Save as draft" class="btn-primary" name="draft">
-                <input type="submit" value="Publish" class="btn-primary" name="publish">
+                <input type="submit" value="Save as draft" class="btn-primary" name="draft" id="submit-btn">
+                <input type="submit" value="Publish" class="btn-primary" name="publish" id="submit-btn">
             </div>
-            <script></script>
         </form>
     </div>
 @endsection

@@ -29,7 +29,7 @@
             <img class="rounded-md max-w-xs max-h-60 md:max-w-lg md:max-h-96 mb-3" src="{{ $article->getImage() }}"
                 alt="{{ $article->topic }}">
         @endif
-        <p class="block flex-none text-gray-700">
+        <p class="block flex-none text-gray-700 justify-start">
             <?= body($article->body, true) ?>
         </p>
         @if (count($tags) > 0)

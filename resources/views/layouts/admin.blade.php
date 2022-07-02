@@ -12,10 +12,10 @@
     <link rel="stylesheet" href="{{ asset('scss/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
-
-    <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="{{ asset('js/nav.js') }}" defer></script>
+
+    <x-head.tinymce-config />
 </head>
 
 <body class="min-h-screen bg-gray-100 m-0 antialiased">
