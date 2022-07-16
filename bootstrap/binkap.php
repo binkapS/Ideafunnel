@@ -24,9 +24,9 @@ function topic(string $topic, bool $output = true)
 function body(string $body, bool $output = true)
 {
     if ($output) {
-        return htmlspecialchars_decode($body);
+        return html_entity_decode($body);
     }
-    return htmlspecialchars($body);
+    return htmlentities($body);
 }
 
 function articleType(string|int $key = null)
